@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="Style.css">
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Rock Paper Scissors</h1>
+    <div class="instructions">
+      Type "rock", "paper", or "scissors" in the popup box to play.
+    </div>
+    <div class="result-box" id="result">Let's play!</div>
+  </div>
+
+  <script>
+    // Ask user for input
+    let player = prompt("Choose rock, paper, or scissors").toLowerCase();
+
+    // Define choices
+    let choices = ["rock", "paper", "scissors"];
+    let computer = choices[Math.floor(Math.random() * 3)];
+
+    // Create result text
+    let resultText = "You chose <strong>${player}</strong>. Computer chose <strong>${computer}</strong>.";
+
+    if (player === computer) {
+      resultText += "<br><strong>It's a tie!</strong>";
+    } else if (
+      (player === "rock" && computer === "scissors") ||
+      (player === "paper" && computer === "rock") ||
+      (player === "scissors" && computer === "paper")
+    ) {
+      resultText += "<br><strong>You win!</strong>";
+    } else if (choices.includes(player)) {
+      resultText += "<br><strong>You lose!</strong>";
+    } else {
+      resultText = "<strong>Invalid input. Please refresh and try again.</strong>";
+    }
+
+    // Show result in the page
+    document.getElementById("result").innerHTML = resultText;
+  </script>
+
+</body>
+</html>
